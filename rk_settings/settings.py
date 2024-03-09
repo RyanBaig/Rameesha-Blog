@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "rk_settings.wsgi.application"
+WSGI_APPLICATION = "rk_settings.wsgi.app"
 
 
 # Database
