@@ -1,0 +1,130 @@
+{% extends "blog/basic.html" %} {% block title %} Blog Post - My Awesome Cart {% endblock title %} {% block css %}
+<style></style>
+{% endblock css %} {% block body %}
+
+<body>
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-md-8 blog-main">
+        <h3 class="pb-4 mb-4 font-italic border-bottom">{{ post.title }}</h3>
+
+        <div class="blog-post">
+          <h2 class="blog-post-title">{{ post.first_head }}</h2>
+          <p class="blog-post-meta">
+            <i class="fa-regular fa-calendar-days"></i> {{ post.pub_date }} by
+            <i class="fa-solid fa-user"></i> Rameesha Kamran
+          </p>
+          <div
+            class="fb-like"
+            data-href="http://localhost:8000/blog/post/{{ post.post_id }}"
+            data-width=""
+            data-layout=""
+            data-action=""
+            data-size=""
+            data-share="true"
+            data-show-faces="false"
+          ></div>
+
+          <p>{{ post.first_head_content|linebreaks }}</p>
+
+          <h2>{{ post.second_head }}</h2>
+          <p>{{ post.second_head_content|linebreaks }}</p>
+
+          <h2>{{ post.third_head }}</h2>
+          <p>{{ post.third_head_content|linebreaks }}</p>
+
+          <h2>{{ post.fourth_head }}</h2>
+          <p>{{ post.fourth_head_content|linebreaks }}</p>
+
+          {% if post.fifth_head and post.fifth_head_content != "" %}
+          <h2>{{ post.fifth_head }}</h2>
+          <p>{{ post.fifth_head_content|linebreaks }}</p>
+          {% endif %} {% if post.sixth_head and post.sixth_head_content != "" %}
+          <h2>{{ post.head5 }}</h2>
+          <p>{{ post.chead5|linebreaks }}</p>
+          {% endif %}
+        </div>
+
+        <hr class="mt-b mb-5" />
+
+        <script
+          type="text/javascript"
+          src="https://latest.cactus.chat/cactus.js"
+        ></script>
+        <link
+          rel="stylesheet"
+          href="https://latest.cactus.chat/style.css"
+          type="text/css"
+        />
+        <div id="comment-section"></div>
+
+        <script>
+          initComments({
+            node: document.getElementById("comment-section"),
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
+            serverName: "cactus.chat",
+            siteName: "MAC",
+            commentSectionId: "Rameesha-BLOG-{{ post.post_id }}",
+          });
+        </script>
+      </div>
+      <!-- Sidebar -->
+
+      <aside class="col-md-4 blog-sidebar">
+        <div class="p-4 mb-3 bg-light rounded">
+          <h4 class="font-italic">
+            <i class="fa-solid fa-circle-info"></i> About
+          </h4>
+          <p class="mb-0">
+            Hi, I am Rameesha and welcome to my fashion realm! I'm a fashion designer who turns
+            unconventional materials into wearable art. Join me in crafting
+            stories through unique creations that celebrate individuality with
+            flair. Let's craft it up!
+          </p>
+        </div>
+
+        <div class="p-4">
+          <h4 class="font-italic">
+            <i class="fa-solid fa-phone"></i> Let's Connect On:
+          </h4>
+          <ol class="list-unstyled">
+            <li><i class="fa-brands fa-instagram"></i> <a href="https://instagram.com/rameesha_mughal6">Instagram</a></li>
+            <li><i class="fa-brands fa-linkedin-in"></i> <a href="https://linkedin.com/in/rameesha-kamran">LinkedIn</a></li>
+            <li><i class="fa-regular fa-envelope"></i> <a href="mailto:kamranrameesha6@gmail.com">E-mail</a></li>
+          </ol>
+        </div>
+
+        <!-- COMPLETED EXERCISE ( ADD BUTTONS TO PREVIOUS/NEXT POSTS)-->
+        <hr class="mt-5 mb-5" />
+        <nav class="blog-pagination text-center">
+          {% if prev_post != "No Previous Posts..." %}
+          <a
+            class="btn btn-outline-primary"
+            href="/blog/post/{{ prev_post.post_id|slice:':10' }}"
+            >View the Previous Post ({{ prev_post.title }})</a
+          >
+          {% else %}
+          <button class="btn btn-outline-primary disabled" disabled>
+            No Previous Posts
+          </button>
+          {% endif %} {% if next_post != "No New Posts..." %}
+          <a
+            class="btn btn-outline-secondary"
+            href="/blog/post/{{ next_post.post_id|slice:':10' }}"
+            tabindex="-1"
+            >View the Next Post ({{ next_post.title }})</a
+          >
+          {% else %}
+          <button class="btn btn-outline-secondary disabled" disabled>
+            No New Posts
+          </button>
+          {% endif %}
+        </nav>
+      </aside>
+      <!-- Sidebar -->
+    </div>
+  </div>
+</body>
+{% endblock body %} {% block js %}
+<script></script>
+{% endblock js %}>
