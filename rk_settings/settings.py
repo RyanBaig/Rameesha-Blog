@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-aj!t17lux_*tdqu3+_^hwer+o3v-5)@3o9rxgg&ua1#(q)pa*t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'rameesha-blog.vercel.app']
+ALLOWED_HOSTS = ["localhost", "rameesha-blog.vercel.app", "127.0.0.1"]
 
 
 # Application definition

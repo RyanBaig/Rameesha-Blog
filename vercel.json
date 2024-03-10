@@ -3,7 +3,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "rk_blog/wsgi.py",
+      "src": "rk_settings/wsgi.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.8" }
     },
@@ -18,7 +18,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "rk_blog/wsgi.py"
+      "dest": "rk_settings/wsgi.py"
     }
   ]
 }
