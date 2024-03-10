@@ -1,0 +1,4 @@
+.env
+.vercel
+*.sqlite3
+db.sqlite3
