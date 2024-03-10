@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-aj!t17lux_*tdqu3+_^hwer+o3v-5)@3o9rxgg&ua1#(q)pa*t"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'rameesha-blog.vercel.app']
 
