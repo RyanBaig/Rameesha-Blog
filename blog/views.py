@@ -4,8 +4,9 @@ from .models import Blogpost
 # Create your views here.
 def index(request):
     myposts = Blogpost.objects.all()
-    
-    return render(request, "blog/index.html", {'myposts': myposts})
+    # get the most recent 4 posts
+    recent_posts = myposts[::-1][:4]
+    return render(request, "blog/index.html", {'myposts': myposts, 'recent_posts': recent_posts})
 
 def blogpost(request, id):
     # EXERCISE COMPLETED (ADD NEXT/PREVIOUS BUTTONS FOR POSTS)
