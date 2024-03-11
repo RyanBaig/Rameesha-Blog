@@ -34,7 +34,7 @@ def searchMatch(query, item):
 
 def search(request):
     query = request.GET.get("q")
-    if query:
+    if query or query != "":
         # Retrieve all blog posts from the database
         all_blog_posts = Blogpost.objects.all()
 
