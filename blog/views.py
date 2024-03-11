@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from django.db.models import Q
 from .models import Blogpost
 
 # Create your views here.
@@ -19,7 +19,31 @@ def blogpost(request, id):
         next_post = "No New Posts..."
     if not prev_post:
         prev_post = "No Previous Posts..."
-    
+
     return render(request, "blog/blogpost.html", {'post': post, 'next_post': next_post, 'prev_post': prev_post})
 
-    
+
+def searchMatch(query, item):
+    if (
+        query.lower() in item.title.lower()
+        or query in item.first_head.lower()
+    ):
+        return True
+    else:
+        return False
+
+
+def search(request):
+    query = request.GET.get("q")
+    if query:
+        # Retrieve all blog posts from the database
+        all_blog_posts = Blogpost.objects.all()
+
+        # Filter blog posts based on searchMatch function
+        results = [post for post in all_blog_posts if searchMatch(query, post)]
+
+        # Pass the results to the template
+        return render(request, "blog/search.html", {"results": results, "query": query})
+    else:
+        # If no query is provided, render a basic search page
+        return render(request, "blog/search.html")

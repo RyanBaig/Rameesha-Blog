@@ -1,40 +1,166 @@
 {% extends 'blog/basic.html'%}
 
 {% block title %}
-Blog Home - My Awesome Cart
+Home - Rameesha Kamran Official
 {% endblock title %}
 
 
 {% block body %}
-<div class="container mt-3">
-    <div class="row my-2 mb-3">
-        {% for item in myposts %}
-        <div class="col-md-6">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    
-                    <h3 class="mb-0">{{ item.title }}</h3>
-                    <div class="mb-1 text-muted"><i class="fa-regular fa-calendar-days"></i> {{ item.pub_date }}</div>
-                    
-                    <h5 class="card-text ">{{ item.first_head }}</h5>
-                    <p class="card-text ">{{ item.first_head_content|slice:":100" }}...</p>
-                    
-                    <a href="post/{{ item.post_id }}" class="stretched-link">Continue reading <i class="fa-solid fa-arrow-right-long"></i></a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <img src="/media/{{ item.thumbnail }}" class="bd-placeholder-img" width="200" height="250" aria-label="Placeholder: Thumbnail">
-                </div>
-            </div>
-        </div>
-        {% if forloop.counter|divisibleby:2 %}
-    </div>
-    <div class="row my-2 mb-3">
-        {% endif %} 
-        {% endfor %}</div>
-</div>
-{% endblock body %}
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1600px">
 
-<!--
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>RAMEESHA KAMRAN</b></h1>
+    <h6>Welcome to the blog of <span class="w3-tag">Rameesha's world</span></h6>
+  </header>
+
+  <!-- Image header -->
+  <header class="w3-display-container w3-wide" id="home">
+    <img class="w3-image" src="https://placehold.co/1600x1060" alt="Fashion Blog" width="1600" height="1060">
+    <div class="w3-display-left w3-padding-large">
+      <h1 class="w3-text-white">Rameesha's</h1>
+      <h1 class="w3-jumbo w3-text-white w3-hide-small"><b>FASHION BLOG</b></h1>
+      <h6><button class="w3-button w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off"
+          onclick="document.getElementById('subscribe').style.display='block'">SUBSCRIBE</button></h6>
+    </div>
+  </header>
+
+  <!-- Grid -->
+  <div class="w3-row w3-padding w3-border">
+  <!-- About/Information menu -->
+          <div class="w3-col w3-right l4">
+            <!-- About Card -->
+            <div class="w3-white w3-margin">
+              <img src="https://placehold.co/300x160" alt="Jane" style="width:100%" class="w3-grayscale">
+              <div class="w3-container w3-black">
+                <h4>Rameesha Kamran</h4>
+                <p>Hi, I am Rameesha and welcome to my fashion realm! I'm a fashion designer who turns
+                  unconventional materials into wearable art. Join me in crafting
+                  stories through unique creations that celebrate individuality with
+                  flair. Let's craft it up!</p>
+              </div>
+            </div>
+            <hr>
+
+            <!-- Posts -->
+            <div class="w3-white w3-margin">
+              <div class="w3-container w3-padding w3-black">
+                <h4>Recent Posts</h4>
+              </div>
+              <ul class="w3-ul w3-hoverable w3-white">
+                <li class="w3-padding-16">
+                  <img src="https://placehold.co/50x50" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                  <span class="w3-large">Denim</span>
+                  <br>
+                  <span>Sed mattis nunc</span>
+                </li>
+                <li class="w3-padding-16">
+                  <img src="https://placehold.co/50x50" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                  <span class="w3-large">Sweaters</span>
+                  <br>
+                  <span>Praes tinci sed</span>
+                </li>
+                <li class="w3-padding-16">
+                  <img src="https://placehold.co/50x50" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                  <span class="w3-large">Workshop</span>
+                  <br>
+                  <span>Ultricies congue</span>
+                </li>
+                <li class="w3-padding-16">
+                  <img src="https://placehold.co/50x50" alt="Image" class="w3-left w3-margin-right"
+                    style="width:50px">
+                  <span class="w3-large">Trends</span>
+                  <br>
+                  <span>Lorem ipsum dipsum</span>
+                </li>
+              </ul>
+            </div>
+            <hr>
+
+
+            <!-- Subscribe -->
+            <div class="w3-white w3-margin">
+              <div class="w3-container w3-padding w3-black">
+                <h4>Subscribe</h4>
+              </div>
+              <div class="w3-container w3-white">
+                <p>Enter your e-mail below and get notified on the latest blog posts.</p>
+                <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
+                <p><button type="button" onclick="document.getElementById('subscribe').style.display='block'"
+                    class="w3-button w3-block w3-red">Subscribe</button></p>
+              </div>
+            </div>
+
+            <!-- END About/Intro Menu -->
+          </div>
+
+    <!-- Blog entries -->
+    <div class="w3-col l8 s12">
+      {% for item in myposts %}
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <div class="w3-center">
+          <h3>{{ item.title }}</h3>
+          <h5>{{ item.first_head }}, <span class="w3-opacity">{{ item.pub_date }}</span></h5>
+        </div>
+
+        <div class="w3-justify">
+          <img src="/media/{{ item.thumbnail }}" style="width:100%" class="w3-padding-16">
+          <p>{{ item.first_head_content|slice:"100" }}...<p>
+          <a href="/post/{{ item.post_id }}">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
+            {% endfor %}
+
+
+          <!-- END GRID -->
+        </div>
+
+        <!-- END w3-content -->
+      </div>
+
+      <!-- Subscribe Modal -->
+      <div id="subscribe" class="w3-modal w3-animate-opacity">
+        <div class="w3-modal-content" style="padding:32px">
+          <div class="w3-container w3-white">
+            <i onclick="document.getElementById('subscribe').style.display='none'"
+              class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
+            <h2 class="w3-wide">SUBSCRIBE</h2>
+            <p>Join my mailing list to receive updates on the latest blog posts and other things.</p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+            <button type="button" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom"
+              onclick="document.getElementById('subscribe').style.display='none'">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Footer -->
+      <footer class="w3-container w3-dark-grey" style="padding:32px">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i
+            class="fa fa-arrow-up w3-margin-right"></i>To the top</button>
+      </footer>
+
+      <script>
+
+        function myFunction(id) {
+          var x = document.getElementById(id);
+          if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+          } else {
+            x.className = x.className.replace(" w3-show", "");
+          }
+        }
+
+        
+      </script>
+
+      </body>
+
+      </html>
+
+      {% endblock body %}
+
+      <!--
 EXERCISE
 {% load static %}
 <a href='{%static "blog/img.jpg" %}'> <img src="{%static 'blog/img.jpg' %}">Click me for img</a>
